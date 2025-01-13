@@ -1,0 +1,23 @@
+.wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.content {
+  font-size: 16px;
+  line-height: 28px;
+  padding: 8px 20px;
+  background: #eff6ff;
+  border-radius: 14px;
+  max-width: 85%;
+}
+
+.text {
+  inset-inline-start: 0 !important;
+  margin-top: 0 !important;
+}
+
+.text > button {
+  display: none;
+}

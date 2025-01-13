@@ -1,0 +1,14 @@
+.wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.content {
+  font-size: 16px;
+  line-height: 28px;
+  padding: 8px 20px;
+  background: #e6ffe6;
+  border-radius: 14px;
+  max-width: 85%;
+}

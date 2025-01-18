@@ -1,5 +1,6 @@
 import isEmpty from 'lodash.isempty';
 import { useQuery } from 'react-query';
+import { useEffect, useRef } from 'react';
 import { Divider, Typography, Spin } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
 
@@ -10,12 +11,20 @@ import { Question } from './components/Question/Question.jsx';
 import { QuestionInput } from './components/QuestionInput/QuestionInput.jsx';
 
 const AppComponent = () => {
+  const bottomRef = useRef(null);
+
   const { data: questions, isLoading } = useQuery({
     queryKey: [questionsApi.key],
     queryFn: questionsApi.fetch,
     refetchOnWindowFocus: false,
     refetchInterval: 60000,
   });
+
+  useEffect(() => {
+    if (bottomRef.current) {
+      bottomRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }
+  }, [questions?.length]);
 
   return (
     <div className={styles.wrapper}>
@@ -44,6 +53,7 @@ const AppComponent = () => {
           {questions.map((question) => (
             <Question key={question._id} {...question} />
           ))}
+          <div ref={bottomRef} />
         </div>
       )}
       <Divider />
